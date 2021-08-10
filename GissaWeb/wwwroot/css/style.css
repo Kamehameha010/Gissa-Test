@@ -1,0 +1,198 @@
+/*
+*     LOGIN
+*/
+body {
+    overflow-x: hidden;
+    padding: 0;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+#body-login {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #212529;
+    text-align: left;
+    background-color: #EBECEE;
+    padding-top: 50px;
+}
+
+.login-clean {
+    position: relative;
+    top: 60px;
+}
+
+.login-clean .ilustration {
+    text-align: center;
+    padding: 0 8 20px;
+    font-size: 80px;
+    color: rgb(181, 181, 181);
+}
+
+.login-clean form {
+    max-width: 320px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 4px;
+    color: #505e6c;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/*
+*   SIDEBAR
+*/
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    background: #333333;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px 0;
+    background: #333333;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li:hover {
+    color: #ffffff;
+    background: #777777;
+    border-left: 0.3em solid #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #333333;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #333333;
+}
+
+
+.ml-auto,
+.mx-auto {
+    margin-left: auto !important;
+}
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    background-color: #EFEFEF;
+    ;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+
+    #sidebar.active {
+        margin-left: 0;
+    }
+
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+form {
+    padding: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+form input[type=text] {
+    border-radius: 10px;
+}
+
+
+@media (max-width: 720px) {
+    form {
+        padding: 50px;
+    }
+}
+
