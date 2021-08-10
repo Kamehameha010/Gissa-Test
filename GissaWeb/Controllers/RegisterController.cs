@@ -1,16 +1,10 @@
 ﻿using GissaWeb.Models;
 using GissaWeb.Models.ViewModel;
+using GissaWeb.Tools;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.SqlServer;
-using System.Data.Sql;
-using System.Data.Entity;
-using System.Data.SqlClient;
-
 using System.Data;
-using GissaWeb.Tools;
+using System.Data.SqlClient;
 
 namespace GissaWeb.Controllers
 {
@@ -45,7 +39,7 @@ namespace GissaWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]UserRegister model)
+        public IActionResult Create([FromBody] UserRegister model)
         {
             int i = 0;
             foreach (var phone in model.Phones)
@@ -88,14 +82,56 @@ namespace GissaWeb.Controllers
 
 
         [HttpPost]
-        public IActionResult Update()
+        public IActionResult Update([FromBody] UserRegister model)
         {
-            return View();
+            int i = 0;
+            foreach (var phone in model.Phones)
+            {
+                dtPhone.Rows.Add(phone.PhoneId, model.UserId, phone.PhoneNumber);
+                i++;
+            }
+            foreach (var skill in model.TestUserSkills)
+            {
+                dtPhone.Rows.Add(skill.UserSkillId, model.UserId, skill.SofSkill);
+                i++;
+            }
+            var parameters = new SqlParameter[]
+            {
+
+                new SqlParameter("@UserId", model.UserId),
+                new SqlParameter("@Fullname", model.FullName),
+                new SqlParameter("@CardId", model.CardId),
+                new SqlParameter("@Username", model.Username),
+                new SqlParameter("@Password", Encrypt.EncryptSha256(model.Password)),
+                new SqlParameter("@Email", model.Email),
+                new SqlParameter("@Phones", SqlDbType.Structured)
+                {
+                    Value = dtPhone,
+                    TypeName = "dbo.test_type_phone"
+                },
+                new SqlParameter("@Rol", model.Rol),
+                new SqlParameter("@TypeID", model.TypeId),
+                new SqlParameter("@IsActive", model.IsActive),
+                new SqlParameter("@UserSkills", SqlDbType.Structured)
+                {
+                    Value = dtSkill,
+                    TypeName = "dbo.test_type_user_skills"
+                }
+        };
+
+            _context.Database.ExecuteSqlRaw(@"test_user_update @UserId @Fullname, @CardId, @Username,
+                @Password,@Email,@¨Phones,@Rol,@TypeID,@IsActive,@UserSkills", parameters);
+            return Ok();
         }
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            return View();
+            var param = new SqlParameter("@UserId", id);
+
+            _context.Database.ExecuteSqlRaw(@"test_user_delete @UserId", param);
+
+            return Ok();
         }
+
     }
 }

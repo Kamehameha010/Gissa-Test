@@ -17,18 +17,18 @@ namespace GissaWeb.Models
         {
         }
 
-        public virtual DbSet<TestPhone> TestPhones { get; set; }
-        public virtual DbSet<TestSoftSkill> TestSoftSkills { get; set; }
-        public virtual DbSet<TestUser> TestUsers { get; set; }
-        public virtual DbSet<TestUserSkill> TestUserSkills { get; set; }
-        public virtual DbSet<TestUserView> TestUserViews { get; set; }
+        public virtual DbSet<Phone> TestPhones { get; set; }
+        public virtual DbSet<SoftSkill> TestSoftSkills { get; set; }
+        public virtual DbSet<User> TestUsers { get; set; }
+        public virtual DbSet<UserSkill> TestUserSkills { get; set; }
+        public virtual DbSet<UserView> TestUserViews { get; set; }
 
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
 
-            modelBuilder.Entity<TestPhone>(entity =>
+            modelBuilder.Entity<Phone>(entity =>
             {
                 entity.HasNoKey();
 
@@ -55,7 +55,7 @@ namespace GissaWeb.Models
                     .HasConstraintName("FK_test_phone_test_user");
             });
 
-            modelBuilder.Entity<TestSoftSkill>(entity =>
+            modelBuilder.Entity<SoftSkill>(entity =>
             {
                 entity.HasKey(e => e.SoftSkillId);
 
@@ -70,7 +70,7 @@ namespace GissaWeb.Models
                     .IsFixedLength(true);
             });
 
-            modelBuilder.Entity<TestUser>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UserId);
 
@@ -114,7 +114,7 @@ namespace GissaWeb.Models
                     .IsFixedLength(true);
             });
 
-            modelBuilder.Entity<TestUserSkill>(entity =>
+            modelBuilder.Entity<UserSkill>(entity =>
             {
                 entity.HasKey(e => e.UserSkillId);
 
@@ -139,7 +139,7 @@ namespace GissaWeb.Models
                     .HasConstraintName("FK_test_user_skill_test_user");
             });
 
-            modelBuilder.Entity<TestUserView>(entity =>
+            modelBuilder.Entity<UserView>(entity =>
             {
                 entity.HasNoKey();
 

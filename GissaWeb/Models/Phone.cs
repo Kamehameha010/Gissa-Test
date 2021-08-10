@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace GissaWeb.Models
 {
-    public partial class TestPhone
+    public partial class Phone
     {
         public int PhoneId { get; set; }
         public int PhoneNumber { get; set; }
         public int UserId { get; set; }
 
-        public virtual TestUser User { get; set; }
+        public virtual User User { get; set; }
     }
 }

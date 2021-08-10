@@ -54,7 +54,7 @@ body.addEventListener("input", (e) => {
     }
 });
 
-document.forms[0].addEventListener("submit", async (e) => {
+document.forms[0].addEventListener("submit",(e) => {
 
     e.preventDefault();
     let options = document.querySelector("#softSkill");
@@ -72,7 +72,7 @@ document.forms[0].addEventListener("submit", async (e) => {
         body: JSON.stringify(await getData())
     });
 
-    await HttpRequest.SendASync(objRequest);
+    fetch(objRequest).then(r=> r.text);
 });
 
 

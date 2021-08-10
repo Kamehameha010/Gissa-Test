@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 namespace GissaWeb.Models
 {
-    public partial class TestSoftSkill
+    public partial class SoftSkill
     {
-        public TestSoftSkill()
+        public SoftSkill()
         {
-            TestUserSkills = new HashSet<TestUserSkill>();
+            TestUserSkills = new HashSet<UserSkill>();
         }
 
         public int SoftSkillId { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<TestUserSkill> TestUserSkills { get; set; }
+        public virtual ICollection<UserSkill> TestUserSkills { get; set; }
     }
 }

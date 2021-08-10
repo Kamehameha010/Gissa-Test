@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GissaWeb.Models
 {
-    public partial class TestUserView
+    public partial class UserView
     {
         public int UserId { get; set; }
         public string FullName { get; set; }

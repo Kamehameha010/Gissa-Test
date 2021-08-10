@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace GissaWeb.Models
 {
-    public partial class TestUserSkill
+    public partial class UserSkill
     {
         public int UserSkillId { get; set; }
         public int UserId { get; set; }
         public int SofSkillId { get; set; }
 
-        public virtual TestSoftSkill SofSkill { get; set; }
-        public virtual TestUser User { get; set; }
+        public virtual SoftSkill SofSkill { get; set; }
+        public virtual User User { get; set; }
     }
 }

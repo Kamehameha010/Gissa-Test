@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace GissaWeb.Models
 {
-    public partial class TestUser
+    public partial class User
     {
-        public TestUser()
+        public User()
         {
-            TestUserSkills = new HashSet<TestUserSkill>();
+            TestUserSkills = new HashSet<UserSkill>();
         }
 
         public int UserId { get; set; }
@@ -22,6 +22,6 @@ namespace GissaWeb.Models
         public int Rol { get; set; }
         public bool IsActive { get; set; }
 
-        public virtual ICollection<TestUserSkill> TestUserSkills { get; set; }
+        public virtual ICollection<UserSkill> TestUserSkills { get; set; }
     }
 }

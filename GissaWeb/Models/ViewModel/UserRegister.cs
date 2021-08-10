@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace GissaWeb.Models.ViewModel
 {
-    public class UserRegister :TestUser
+    public class UserRegister :User
     {
-        public ICollection<TestPhone> Phones { get; set; }
+        public ICollection<Phone> Phones { get; set; }
     }
 }
