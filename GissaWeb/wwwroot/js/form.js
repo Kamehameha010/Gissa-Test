@@ -20,66 +20,38 @@ body.addEventListener("click", (e) => {
     }
 })
 
-body.addEventListener("input", (e) => {
-
-    let target = e.target;
-    switch (target.name) {
-        case "phoneNumber": {
-            /* if (!/^\d{8}$/.test(target.value)) {
-                target.setCustomValidity("Campo debe tener 8 digitos");
-                return false;
-            } */
-            return;
-        }
-        case "cardId": {
-            let select = document.querySelector("#typeId");
-
-            /* if (select.value == "1") {
-                console.log(target.value.length != 9);
-                if (target.value.length != 9) {
-                    target.setCustomValidity("Campo debe tener 9 digitos");
-                    return false;
-                }
-            } */
-            return;
-        }
-        case "email": {
-            /*  if (!/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(target.value)) {
-                 target.setCustomValidity("Correo invalido");
-                 return false;
-             } */
-            return;
-        }
-
-    }
+window.addEventListener("load", (e) => {
+    const email = document.querySelector("#email"), pwd = document.querySelector("#password"),
+        tel = document.querySelector("input[name=phoneNumber]");
+    email.setAttribute("pattern", "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$");
+    pwd.setAttribute("pattern", `^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6}$`);
+    tel.setAttribute("pattern", `^\\d{8}$`);
 });
 
-document.forms[0].addEventListener("submit",(e) => {
+document.forms[0].addEventListener("submit", (e) => {
 
     e.preventDefault();
     let options = document.querySelector("#softSkill");
-    /* if (options.selectedOptions.length < 3) {
+    if (options.selectedOptions.length < 3) {
         options.setCustomValidity("Debe eligir minimo 3")
-        
+
         return false;
-    } */
+    }
 
     let objRequest = new Request(`/Register/Create`, {
         method: "POST",
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify(await getData())
+        body: JSON.stringify(getData())
     });
 
-    fetch(objRequest).then(r=> r.text);
+    fetch(objRequest).then(r => r.text);
 });
 
 
-"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6}$"
 
-
-async function getData() {
+function getData() {
     let form = Object.fromEntries(new FormData(document.forms[0]));
     let { userId, fullName, cardId, username, password, rol, typeId } = form;
     let tels = document.querySelectorAll("input[name=phoneNumber]");
@@ -95,4 +67,4 @@ async function getData() {
 
     return { userId, fullName, cardId, username, password, rol, typeId, phones, userSkills }
 
-}
+} 
